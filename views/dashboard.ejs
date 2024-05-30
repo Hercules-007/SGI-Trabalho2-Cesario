@@ -1,0 +1,43 @@
+<%- include("header") -%>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;">
+  <div class="container-md">
+    <h3>Welcome, <%= user.username %>!</h3>
+    <a href="/auth/logout"><button type="button" class="btn btn-secondary">Logout</button></a>
+  </div>
+</nav>
+
+<div class="col-sm-6 mb-3 mb-sm-0 m-4">
+  <div class="card bg-light">
+    <div class="card-body">
+      <form action="/items/create" method="POST">
+        <h3 class="card-title">Add new item</h3><br>
+        <input type="text" name="title" placeholder="Title" required><br><br>
+        <textarea name="description" placeholder="Description" required></textarea><br><br>
+        <button type="submit" class="btn btn-success">Create Item</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<ul>
+  <% items.forEach(item => { %>
+    <div class="row">
+      <div class="col-sm-6 mb-3 mb-sm-0 mt-2">
+        <div class="card bg-dark text-white">
+          <div class="card-body">
+            <li style="list-style-type: none;">
+              <h3 class="card-title"><%= item.title %></h3>
+              <p class="card-text"><%= item.description %></p>
+              <form action="/items/delete/<%= item._id %>" method="POST" style="display: inline;">
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+            </li>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% }) %>
+</ul>
+  
+</body>
+</html>

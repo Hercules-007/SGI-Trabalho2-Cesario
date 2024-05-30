@@ -1,0 +1,14 @@
+<%- include("header") -%>
+  <% if (user) { %>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/auth/logout">Logout</a>
+  <% } else { %>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;">
+      <div class="container-md">
+        <a href="/auth/google"><button type="button" class="btn btn-primary">Login with Google</button></a>
+      </div>
+    </nav>
+  <% } %>
+</body>
+</html>
