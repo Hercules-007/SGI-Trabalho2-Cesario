@@ -33,7 +33,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // EJS
-app.set('view engine', 'ejs');
+// app.set('view engine', 'ejs');
+
+app.set("views", __dirname + "/views");
+app.set("view engine", "ejs");
+app.use(express.static(__dirname + "public"));
 
 // Routes
 app.use('/', require('./routes/index'));
